@@ -65,6 +65,10 @@ final class UserCreator
             $errors['username'] = 'Input required';
         }
 
+	    if (empty($data['password'])) {
+		    $errors['password'] = 'Input required';
+	    }
+
         if (empty($data['email'])) {
             $errors['email'] = 'Input required';
         } elseif (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {

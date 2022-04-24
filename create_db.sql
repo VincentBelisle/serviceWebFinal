@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 20 avr. 2022 à 16:16
+-- Généré le :  Dim 24 avr. 2022 à 00:22
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.11
 
@@ -42,10 +42,16 @@ CREATE TABLE `cle_api` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`) VALUES
+(1, 'bozotte@gmail.com', '$2y$10$5WS5pG2YQr.uJV6G4/3S3./BR5trwyE8Fl/714gWkqPROF2PsV/iy');
 
 -- --------------------------------------------------------
 
@@ -55,9 +61,11 @@ CREATE TABLE `users` (
 
 CREATE TABLE `vehicule` (
   `id` int(11) NOT NULL,
-  `nom_modele` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `marque` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `nom_modele` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `marque` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `transmission` enum('manuelle','automatique') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `annee` year(4) NOT NULL,
+  `motricite` enum('propulsion','traction','integrale','4x4') COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -75,7 +83,8 @@ ALTER TABLE `cle_api`
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `vehicule`
@@ -97,7 +106,7 @@ ALTER TABLE `cle_api`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `vehicule`
