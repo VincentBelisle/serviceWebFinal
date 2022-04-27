@@ -1,17 +1,17 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Base-Slim-Skeleton
-  description: Structure de base d'un api créé dans le cadre du cours Services Web H2022
+  title: Vehicles
+  description: Structure de l'api Vehicles créé dans le cadre du cours Services Web H2022
   
 servers: 
-  - url: http://localhost/base-slim-skeleton
+  - url: http://localhost/serviceWebFinal
 paths:
-  /:
+  /vehicles:
     get:
       tags:
-        - Général
-      summary: Message de bienvenue
+        - Véhicules
+      summary: Retourne tout les véhicules.
       responses:
         '200': 
           description: 
@@ -20,14 +20,71 @@ paths:
               schema:
                 type: object
                 properties:
-                  success:
-                    type: boolean
-                  message:
+                  id:
+                    type: integer
+                  make:
                     type: string
+                  model:
+                    type: string
+                  year:
+                    type: year
                 example:
-                    success: true
-                    message : 'Hello world!'
+                  id : 1
+                  make : 'Ford'
+                  model : 'Mustang Shelby GT500'
+                  year : 1967
+    post:
+      tags: 
+        - Véhicules
+      summary: Ajout d'un véhicule.
+      requestBody:
+        description: Les informations du véhicule à ajouter.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  id:
+                    type: integer
+                  make:
+                    type: string
+                  model:
+                    type: string
+                  year:
+                    type: year
+              example:
+                make : 'Ford'
+                model : 'Mustang Shelby GT500'
+                year : 1967
+
+              
+      responses:
+        '201': 
+          description: L'id du véhicule ajouté.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle_id:
+                    type: integer
+                example:
+                  vehicle_id : 1
+    delete:
+      tags:
+        - Véhicules
+      summary: Supprime un véhicule selon son id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+      responses:
+        '204':
+          description:
+          content:
   
+                   
   /users:
     post:
       tags: 
@@ -41,22 +98,17 @@ paths:
             schema:
               type: object
               properties:
-                username:
-                  type: string
-                first_name:
-                  type: string
-                last_name:
-                  type: string
                 email:
                   type: string
+                password:
+                  type: string
               example:
-                username : 'mathF'
-                first_name: 'Mathieu'
-                last_name: 'Fréchette'
-                email: 'frechette.mathieu@cegepvicto.ca'
+                username : 'admin'
+                password : 'admin123'
+              
       responses:
         '201': 
-          description: Le id de l'usager créé
+          description: L'id de l'usager créé.
           content:
             application/json:
               schema:
@@ -65,5 +117,5 @@ paths:
                   user_id:
                     type: integer
                 example:
-                  id : 1
+                  user_id : 1
   

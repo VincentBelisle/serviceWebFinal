@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  Dim 24 avr. 2022 à 00:22
+-- Généré le :  mer. 27 avr. 2022 à 01:41
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.11
 
@@ -61,12 +61,18 @@ INSERT INTO `users` (`id`, `email`, `password`) VALUES
 
 CREATE TABLE `vehicule` (
   `id` int(11) NOT NULL,
-  `nom_modele` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `marque` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `transmission` enum('manuelle','automatique') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `annee` year(4) NOT NULL,
-  `motricite` enum('propulsion','traction','integrale','4x4') COLLATE utf8mb4_general_ci NOT NULL
+  `model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `make` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `vehicule`
+--
+
+INSERT INTO `vehicule` (`id`, `model`, `make`, `year`) VALUES
+(1, 'Mustang Bullit', 'Ford', 2008),
+(2, 'GTO Judge', 'Pontiac', 1969);
 
 --
 -- Index pour les tables déchargées
@@ -112,7 +118,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `vehicule`
 --
 ALTER TABLE `vehicule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
