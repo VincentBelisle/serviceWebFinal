@@ -25,12 +25,12 @@ class VehicleDeleteActionIdRepository
 	}
 
 	/**
-	 * Select users.
+	 * Delete a vehicle.
 	 *
 	 *
 	 *
-	 * @return reponse
-	 */
+     */
+	 
 	public function deleteVehicleById($id)
 	{
 
@@ -39,8 +39,6 @@ class VehicleDeleteActionIdRepository
 		$tab = $this->connection->prepare($sql);
 
 		$tab->execute();
-
-		return $id;
 
 	}
 }

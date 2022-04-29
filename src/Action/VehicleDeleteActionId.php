@@ -23,16 +23,9 @@ final class VehicleDeleteActionId
 
 		$id = $request->getAttribute('id', 0);
 
-		// Invoke the Domain with inputs and retain the result
-		$result = $this->vehicleDeleteId->deleteVehicleById($id);
-		// Build the HTTP response
+		
+		$this->vehicleDeleteId->deleteVehicleById($id);
 
-		// Transform the result into the JSON representation
-		$result = [
-			'vehicle_id' => $id
-		];
-		// Build the HTTP response
-		$response->getBody()->write((string)json_encode($result));
 
 		return $response
 			->withHeader('Content-Type', 'application/json')

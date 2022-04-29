@@ -20,14 +20,24 @@ final class VehicleListAction
 		ResponseInterface $response
 	): ResponseInterface {
 
+
 		// Transform the result into the JSON representation
 		$result = $this->vehicleList->selectVehicles();
 
-		// Build the HTTP response
-		$response->getBody()->write((string)json_encode($result));
+		if (sizeof($result) == 0) {
+			$response->getBody()->write((string)json_encode(['message' => 'No vehicles found']));
 
+
+			return $response
+			->withHeader('Content-Type', 'application/json')
+			->withStatus(404);
+		} else {
+			$response->getBody()->write((string)json_encode($result));
+		
+		// Build the HTTP response
 		return $response
 			->withHeader('Content-Type', 'application/json')
 			->withStatus(200);
+		}
 	}
 }

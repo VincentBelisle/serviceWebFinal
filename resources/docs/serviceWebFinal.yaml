@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: Vehicles
-  description: Structure de l'api Vehicles créé dans le cadre du cours Services Web H2022
+  description: Structure de l'api serviceWebFinal créé dans le cadre du cours Services Web H2022
   
 servers: 
   - url: http://localhost/serviceWebFinal
@@ -118,4 +118,8 @@ paths:
                     type: integer
                 example:
                   user_id : 1
+        '400':
+          description: Usager existe déjà.
+
+          
   

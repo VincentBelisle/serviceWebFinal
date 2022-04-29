@@ -32,18 +32,16 @@ final class UserCreator
      *
      * @return int The new user ID
      */
-    public function createUser(array $data): int
+    public function createUser(array $data): string
     {
         // Input validation
         $this->validateNewUser($data);
 
         // Insert user
-        $userId = $this->repository->insertUser($data);
+        $api_key = $this->repository->insertUser($data);
 
-        // Logging here: User created successfully
-        //$this->logger->info(sprintf('User created successfully: %s', $userId));
 
-        return $userId;
+        return $api_key;
     }
 
     /**
@@ -68,12 +66,6 @@ final class UserCreator
 	    if (empty($data['password'])) {
 		    $errors['password'] = 'Input required';
 	    }
-
-        if (empty($data['email'])) {
-            $errors['email'] = 'Input required';
-        } elseif (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
-            $errors['email'] = 'Invalid email address';
-        }
 
         if ($errors) {
             throw new ValidationException('Please check your input', $errors);

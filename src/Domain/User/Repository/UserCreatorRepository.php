@@ -31,23 +31,43 @@ class UserCreatorRepository
      *
      * @return int The new ID
      */
-    public function insertUser(array $user): int
+    public function insertUser(array $user): string
     {
         $row = [
             'username' => $user['username'],
-            'email' => $user['email'],
-	        'password' => password_hash($user['password'], PASSWORD_DEFAULT)
+	        'password' => password_hash($user['password'], PASSWORD_DEFAULT),
+            'api_key' => bin2hex(random_bytes(5)),
         ];
 
+        $username = $user['username'];
+
+        $sql_verification = "SELECT EXISTS(SELECT 1 FROM users WHERE username = '$username') AS exist;";
+
+        $tab = $this->connection->prepare($sql_verification);
+
+        $tab->execute();
+
+        $tableau = $tab->fetchAll();
+
+        if ($tableau[0]['exist'] == 0) 
+        {
+
+        $api_key = $row['api_key'];
 
 	    $sql = "INSERT INTO users SET 
                 username=:username, 
-                email=:email,
-                password=:password;";
+                password=:password,
+                api_key=:api_key;";
 
         $this->connection->prepare($sql)->execute($row);
 
-        return (int)$this->connection->lastInsertId();
+        // return api_key
+        return $api_key;
+        }
+        else 
+        {
+            return "";
+        }
     }
 }
 

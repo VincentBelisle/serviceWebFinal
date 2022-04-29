@@ -37,8 +37,6 @@ final class VehicleDeleteById
 		$this->repository->deleteVehicleById($id);
 
 
-		return $id;
-
 	}
 
 }
