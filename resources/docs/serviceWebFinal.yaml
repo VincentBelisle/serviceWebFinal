@@ -80,9 +80,64 @@ paths:
           in: path
           required: true
       responses:
-        '204':
-          description:
+        '200':
+          description: 
           content:
+    put:
+      tags:
+        - Véhicules
+      summary: Modifie un véhicule selon son id.
+      requestBody:
+        description: Les informations du véhicule à ajouter.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  id:
+                    type: integer
+                  make:
+                    type: string
+                  model:
+                    type: string
+                  year:
+                    type: year
+              example:
+                make : 'Ford'
+                model : 'Mustang Shelby GT500'
+                year : 1967
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id du vehicule à modifié
+      responses:
+        '204':
+          description: Le vehicule modifie
+          content:
+           application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  vehicle_id:
+                    type: integer
+                example:
+                  message: Vehicule modifie avec succes
+                  vehicle_id : 1
+        '201':
+          description: Le vehicule cree
+          content:
+           application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle_id:
+                    type: integer
+                example:
+                  vehicle_id : 1
   
                    
   /users:

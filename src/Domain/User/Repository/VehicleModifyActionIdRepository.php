@@ -74,6 +74,7 @@ class VehicleModifyActionIdRepository
 
 
             $sql = "INSERT INTO vehicule SET 
+                    id = $id,
                     model=:model,
                     make=:make,
                     year=:year;";

@@ -19,8 +19,8 @@ final class VehicleListAction
 		ServerRequestInterface $request,
 		ResponseInterface $response
 	): ResponseInterface {
-
-
+		
+		
 		// Transform the result into the JSON representation
 		$result = $this->vehicleList->selectVehicles();
 
