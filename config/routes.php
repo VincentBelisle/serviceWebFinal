@@ -30,10 +30,11 @@ return function (App $app) {
     // Get la liste de tout les véhicules
 	$app->get('/vehicles', \App\Action\VehicleListAction::class);
         
-        
-
+    
 	// Documentation de l'api
     $app->get('/docs', \App\Action\Docs\SwaggerUiAction::class);
+
+    $app->options('/{routes:.*}', \App\Action\PreflightAction::class);
 
 };
 

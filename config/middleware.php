@@ -14,6 +14,7 @@ return function (App $app) {
     // Permettre les CORS
     $app->add(\App\Middleware\CorsMiddleware::class);
     // Add the Slim built-in routing middleware
+
     $app->addRoutingMiddleware();
 
     // Add app base path
