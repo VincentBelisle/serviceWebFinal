@@ -1,9 +1,9 @@
 <?php
 
-use App\Middleware\ApiMiddleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\App;
+use App\Middleware\ApiMiddleware;
 
 return function (App $app) {
 
@@ -16,7 +16,9 @@ return function (App $app) {
 
 
 	// Création d'un véhicule
-	$app->post('/vehicles', \App\Action\VehicleCreateAction::class);
+	$app->post('/vehicles', \App\Action\VehicleCreateAction::class)
+        ->add(ApiMiddleware::Class);
+
 
 
     // Suppression d'un véhicule selon son id
