@@ -14,7 +14,7 @@ final class HomeAction
         
         $result = json_encode([
             'success' => true, 
-            'message' => 'Bienvenue sur mon api de véhicules!'
+            'message' => 'Bienvenue sur mon api de vehicules!'
         ]);
         
         $response->getBody()->write($result);
