@@ -18,7 +18,7 @@ switch (MODE) {
         // Configuration BD pour Heroku
         $_ENV['host'] = 'us-cdbr-east-05.cleardb.net';
         $_ENV['username'] = 'b05fb6439d9aa0';
-        $_ENV['database'] = 'heroku_d9e9788dd0e2605 ';
-        $_ENV['password'] = '1df8b643 ';
+        $_ENV['database'] = 'heroku_d9e9788dd0e2605';
+        $_ENV['password'] = '1df8b643';
         break;
 };
