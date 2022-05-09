@@ -5,7 +5,7 @@ info:
   description: Structure de l'api serviceWebFinal créé dans le cadre du cours Services Web H2022
   
 servers: 
-  - url: http://localhost/serviceWebFinal
+  - url: https://calm-mesa-80514.herokuapp.com/
 paths:
   /vehicles:
     get:

@@ -7,6 +7,9 @@ use App\Middleware\ApiMiddleware;
 
 return function (App $app) {
 
+    $app->get('/', \App\Action\HomeAction::class)->setName('home');
+
+
     // Permet a un usager d'obtenir une clé d'api
 
     $app->get('/cle_api', \App\Action\CleApiAction::class);
