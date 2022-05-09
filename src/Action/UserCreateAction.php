@@ -28,7 +28,7 @@ final class UserCreateAction
     
         if ($api_key == "") {
 
-            $response->getBody()->write((string)json_encode(['error' => 'User already exists, choose another username']));
+            $response->getBody()->write((string)json_encode(['erreur' => 'Usager existe déjà, utiliser un nouveau username']));
 
 
         return $response

@@ -25,7 +25,7 @@ final class VehicleListAction
 		$result = $this->vehicleList->selectVehicles();
 
 		if (sizeof($result) == 0) {
-			$response->getBody()->write((string)json_encode(['message' => 'No vehicles found']));
+			$response->getBody()->write((string)json_encode(['message' => 'Aucun véhicule trouvé']));
 
 
 			return $response

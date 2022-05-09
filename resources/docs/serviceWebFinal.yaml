@@ -125,7 +125,7 @@ paths:
                   vehicle_id:
                     type: integer
                 example:
-                  message: Vehicule modifie avec succes
+                  message: Vehicule modifié avec succès
                   vehicle_id : 1
         '201':
           description: Le vehicule cree
