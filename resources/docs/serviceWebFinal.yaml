@@ -114,7 +114,7 @@ paths:
           description: Id du vehicule à modifié
       responses:
         '204':
-          description: Le vehicule modifie
+          description: Le vehicule modifié
           content:
            application/json:
               schema:
@@ -128,7 +128,7 @@ paths:
                   message: Vehicule modifié avec succès
                   vehicle_id : 1
         '201':
-          description: Le vehicule cree
+          description: Le vehicule crée
           content:
            application/json:
               schema:
