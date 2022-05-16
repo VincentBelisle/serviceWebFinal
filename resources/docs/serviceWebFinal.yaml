@@ -128,7 +128,7 @@ paths:
                   message: Vehicule modifié avec succès
                   vehicle_id : 1
         '201':
-          description: Le vehicule crée
+          description: Le vehicule créé
           content:
            application/json:
               schema:
